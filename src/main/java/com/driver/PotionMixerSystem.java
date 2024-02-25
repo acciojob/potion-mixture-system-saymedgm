@@ -18,26 +18,46 @@ public class PotionMixerSystem {
         }
 
         public void calculatePower() {
-        	//your code goes here
+            double basePower = 0.0;
+
+            if ("Rose".equals(mainIngredient)) {
+                basePower = 100.0;
+            } else if ("Lavender".equals(mainIngredient)) {
+                basePower = 80.0;
+            } else if ("Mint".equals(mainIngredient)) {
+                basePower = 60.0;
+            }
+
+            double percentageBoost = 0.0;
+
+            if ("Honey".equals(additiveIngredient)) {
+                percentageBoost = 0.20;
+            } else if ("Ginger".equals(additiveIngredient)) {
+                percentageBoost = 0.10;
+            } else if ("Lemon".equals(additiveIngredient)) {
+                percentageBoost = 0.05;
+            }
+
+            this.power = basePower + (basePower * percentageBoost);
+
+            if (this.power > 500) {
+                this.power = 500; // Caps the power to a maximum of 500
+            }
         }
 
         public String getPotionName() {
-        	//your code goes here
             return potionName;
         }
 
         public String getMainIngredient() {
-        	//your code goes here
             return mainIngredient;
         }
 
         public String getAdditiveIngredient() {
-        	//your code goes here
             return additiveIngredient;
         }
 
         public double getPower() {
-        	//your code goes here
             return power;
         }
     }
